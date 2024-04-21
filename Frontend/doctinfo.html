@@ -1,0 +1,101 @@
+
+  <style>
+    * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            height: 70%;
+            width: 100vw;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container-1 {
+            /* background-color: #48444470; */
+            /* background: transparent; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* opacity: 0.2; */
+            border: 1px solid gray;
+            box-shadow: 0px 0px 3px #ffffff95;
+            border-color: greenyellow;
+            width: 320px;
+            height: 500px;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+
+        img {
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+            opacity: 1;
+        }
+
+        .container-2 {
+            /* background-color: wheat; */
+            width: 370px;
+            height: 500px;
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+            border-color: greenyellow;
+            align-items: center;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            border: 1px solid gray;
+            box-shadow: 0px 0px 3px #ffffff95;
+        }
+
+        input {
+            height: 20px;
+            width: 230px;
+        }
+
+        button {
+            height: 25px;
+            width: 75px;
+        }
+  </style>
+</head>
+<body>
+
+    <body ng-app="myApp" ng-controller="DoctPersonalController">
+    
+       
+                <div class="col">
+    
+                    <h1 style="text-align: center;margin: 3%;"><u>Personal Information</u></h1>
+                    
+                <div class="container" >
+                    <div class="container-1">
+                        <!-- <img src="./images/Businesswoman_at_computer.png" alt=""> -->
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRO7KsoOCL6RGPCvcEk-zDRlMRiKxlZoU0Ng&usqp=CAU" alt="">
+                    </div>
+                    <div class="container-2" >
+                        <form action="" ng-repeat="info in doctinfo" style="margin-left: 6%;">
+                            <label for="name">Name : {{info.first_name}} {{info.last_name}}</label><br> <hr>
+                
+                            <label for="phone">Age : {{info.age}}</label><br><hr>
+                            <label for="phone">Gender : {{info.gender}}</label><br><hr>
+                            <label for="phone">Phone : {{info.contact}}</label><br><hr>
+
+                            <label for="age">Address : {{info.address}}</label> <br> <hr>
+                            <label for="age">Qualification : {{info.qualification}}</label> <br> <hr>
+                            <label for="age">Department : {{info.department__departments}}</label> <br><hr>
+                            <label for="age">Fees : {{info.doctorFee}}</label> <br>            
+                        </form>
+                    </div>
+                </div>
+              </div>
+     
+             </div>
+        
+        </div>   
+</body>
+</html>

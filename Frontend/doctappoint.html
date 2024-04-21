@@ -1,0 +1,112 @@
+<div ng-app="myApp" ng-controller="DoctAppointController">
+<div class="col mt-lg-3">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h3 style="font-size: 40px;">Patient's Appointment</h3>
+            </div>
+            <div class="col">
+            <form class="d-flex" style="position: relative; left: 20%;margin-top: 2%;">
+                <input class="form-control me-2"  type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit" ng-model="search">Search</button>
+              </form>
+            </div>
+            <div class="col" >
+                <button type="button" style="position: relative; left: 50%;" class="btn btn-secondary btn-lg">Appointment</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <table class="table caption-top ">
+           <caption>Patient ID :-</caption>
+           <thead class="bg-dark table-dark">
+             <tr>
+               <th scope="col">Patient Id</th>
+               <th scope="col">First Name</th>
+               <th scope="col">Age</th>
+               <th scope="col">Gender</th>
+               <th scope="col">Date Assign</th>
+               <th scope="col">Time Assign</th>
+               <th scope="col">Accept/Reject</th>
+               <th scope="col">Reschedule</th>
+             </tr>
+           </thead>
+           <tbody>
+             <tr ng-repeat="(index, appoint) in doctappoint">
+               <th scope="row">1564646465</th>
+               <td>{{appoint.patient__first_name + " " + appoint.patient__last_name}}</td>
+               <td>{{appoint.patient__age}}</td>
+               <td>{{appoint.patient__gender}}</td>
+               <td>{{appoint.appointmentDate}}</td>
+               <td>{{appoint.time}}</td>
+               <td><button type="button" ng-click="accept(appoint,index)" class="btn btn-outline-primary btn-sm">Accept</button>
+                <button type="button" ng-click="reject(appoint, index)" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#myModal" >Reject</button>
+           
+                <div ng-app="myApp" ng-controller="ModalDeleteController">  
+              <div class="modal fade" id="myModal">
+                <div class="modal-dialog">
+                  <div class="modal-content" >
+              
+]                    <div class="modal-header">
+                      <h4 class="modal-title">Reson for Rejecting the Appointment</h4>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+              
+                    <div class="modal-body">
+                      <input type="text" class="form-control" ng-model="reasonInput">
+                    </div>
+              
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-danger" ng-click="submit(appoint, index)" data-bs-dismiss="modal">Submit</button>
+                    </div>
+              
+                  </div>
+                </div>
+              </div>
+              </div>   
+              </td>
+               <td><button class="btn btn-outline-success" ng-click="edit(appoint)" type="button" data-bs-toggle="modal" data-bs-target="#myModal1">Reschedule</button>
+                <div ng-app="myApp" ng-controller="Modal2Controller">  
+                  <div class="modal fade" id="myModal1">
+                    <div class="modal-dialog">
+                      <div class="modal-content" >
+                  
+                        <div class="modal-header">
+                          <h4 class="modal-title">Edit Date and Time</h4>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                  
+                        <div class="modal-body">
+                          <select class="p-2 form-select " ng-model="time" style="width: 100%; margin-bottom: 10px;" aria-label="Default select example">
+                            <option value="" selected disabled hidden>Choose a time</option>                               
+                            <option value="{{slots.slots}}" ng-repeat="slots in slot">{{slots.slots}}</option>
+                          </select> 
+                          <input type="date" class="p-2 form-control" style="margin-bottom: 10px;" ng-model="date" id="dateInput" ng-change="updateDate()">
+
+                          <input type="text" class="form-control" ng-model="reason" placeholder="Reason">
+
+                        </div>
+                  
+                        <div class="modal-footer">
+                          <button type="submit" class="btn btn-danger" ng-click="submit(appoint, index)" data-bs-dismiss="modal">Submit</button>
+                        </div>
+                  
+                      </div>
+                    </div>
+                  </div>
+                  </div>   
+              </td>
+              </tr>
+            
+           </tbody>
+         </table>
+    </div>
+</div>
+
+<style>
+#name {
+  font-size: 20px;
+}
+</style>
+          

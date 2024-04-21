@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Home Page</title>
+
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-google-chart/1.0.0/ng-google-chart.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="node_modules/@uirouter/angularjs/release/angular-ui-router.js"></script>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="hospital.js"></script>
+
+    <style>
+      .column-container {
+    display: flex;
+    flex-direction: row;
+}
+    </style>
+
+    
+</head>
+<body ng-app="myApp" ng-controller="HomePageController">
+    <nav class="navbar navbar-expand-xxl navbar-dark bg-dark ">
+        
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><h1>HEALTH CARE</h1></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          </div>
+        </div>
+      </nav>
+
+
+
+      <!-- <div class=" ml-4 mr-lg-4" style="font-size: 30px;">
+        <nav class="navbar navbar-light bg-light nav justify-content-center"><h3> HEALTH IS WEALTH!! </h3>
+     </nav>
+    </div> -->
+
+
+    <h1 class="text-center">Graph</h1>
+    <!-- <div google-chart chart="chartObject" style="height: 400px;">{{hii}}</div> -->
+    <div class="column-container">
+    <canvas id="myChart" style="width:80%;max-width:600px; margin-left: 13%;"></canvas>
+   
+    <div id="chart" style="margin-left: 20%;"></div>
+    </div>
+
+
+    <br> <br>
+    <hr>
+
+
+      <div class="row row-cols-1 row-cols-md-4 g-2 ml-6 mr-lg-5" style="margin-top: 5%;" id="choco">
+        <div class="col mr-lg-5 " style="margin-left: 10%;">
+          <div class="card h-100">
+            <img src="https://png.pngtree.com/png-clipart/20190115/ourlarge/pngtree-doctors-medical-hospital-doctors-png-image_354887.jpg" style="height: 300px; width: 300px; margin: 16%;" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title justify-content-center" style="text-align: center ;">DOCTOR</h5>
+            </div>
+            <div class="card-footer">
+              <small class="text" style="text-align: center;"><h4><a ui-sref="DoctorRegisteration">REGISTER</a></h4></small>
+            </div>       
+
+          
+            </div>
+          </div>
+            <div class="col mr-lg-5" style="margin-left: 6%;">
+          <div class="card h-100">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSD7KI2o_4NHVJj4M9Np8s3lcWg2qgqk1YSpg&usqp=CAU" style="height: 300px; width: 300px; margin: 16%;" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title justify-content-center" style="text-align: center ;">RECEPTIONIST</h5>
+            </div>
+            <div class="card-footer">
+              <small class="text " style="text-align: center;"><h4><a ui-sref="Login">LOGIN</a></h4></small>                         
+            </div>
+          </div>
+        </div>
+        <div class="col mr-lg-5 ml-lg-5" style="margin-left: 6%;">
+          <div class="card h-100">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkiIFjCOZ-mMeqxd2ryrneiHedE8G9S0AboA&usqp=CAU" style="height: 300px; width: 300px; margin: 16%;" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title justify-content-center" style="text-align: center ;">PATIENT</h5>
+          </div>
+          <div class="card-footer">
+            <small class="text" style="text-align: center;"><h4><a ui-sref="Register">REGISTER</a></h4></small>
+          </div>
+          </div>
+        </div>
+            </div>
+          </div>
+      </div>
+
+<br><br>
+<footer
+          class="text-center text-lg-start text-white"
+          style="background-color: #929fba"
+          >
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+      <!-- Section: Links -->
+      <section class="">
+        <!--Grid row-->
+        <div class="row">
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto ">
+            <h6 class="text-uppercase mb-4 font-weight-bold">
+              <h2>HEALTH CARE</h2>
+            </h6>
+            <p>
+              A hospital is a healthcare institution providing patient treatment with specialized health science and auxiliary healthcare staff and medical equipment.
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <hr class="w-100 clearfix d-md-none" />
+
+          <hr class="w-100 clearfix d-md-none" />
+
+          <!-- Grid column -->
+          <hr class="w-100 clearfix d-md-none" />
+
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+            <p><i class="fas fa-home mr-3"></i> INDIA, GHZ 10012, UP</p>
+            <p><i class="fas fa-envelope mr-3"></i> siddharthtadav@gmail.com</p>
+            <p><i class="fas fa-phone mr-3"></i> nikhilsingh@gmail.com</p>
+            <p><i class="fas fa-print mr-3"></i> +91 9569673877<bh/p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">Follow us</h6>
+
+          
+          </div>
+        </div>
+        <!--Grid row-->
+      </section>
+      <!-- Section: Links -->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div
+         class="text-center p-3"
+         style="background-color: rgba(0, 0, 0, 0.2)"
+         >
+      © 2020 Copyright:
+      <a class="text-white" href="https://healthcare.com/"
+         >Healthcare.com</a
+        >
+    </div>
+    <!-- Copyright -->
+  </footer> 
+
+</body>
+</html>

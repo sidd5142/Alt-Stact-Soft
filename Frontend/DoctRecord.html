@@ -1,0 +1,149 @@
+<div ng-app="myApp" ng-controller="DoctRecordController">
+    <div class="col mt-lg-3">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h3 style="font-size: 40px;">Records</h3>
+                </div>
+                <div class="col">
+                <form class="d-flex" style="position: relative; left: 20%;margin-top: 2%;">
+                    <input class="form-control me-2"  type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                  </form>
+                </div>
+                <div class="col" >
+                    <button type="button" style="position: relative; left: 50%;" class="btn btn-secondary btn-lg">Appointment</button>
+                </div>
+            </div>
+    
+            <hr>
+    
+            <table class="table caption-top ">
+               <caption>Records :-</caption>
+               <thead class="bg-dark table-dark">
+                 <tr>
+                    <th scope="col">Index</th>
+                   <th scope="col">Name</th>
+                   <th scope="col">Age</th>
+                   <th scope="col">Gender</th>
+                   <th scope="col">Appointment Date</th>
+                   <th scope="col">Symptoms</th>
+                   <th scope="col">Prescription</th>
+                   <!-- <th scope="col">Visits</th> -->
+                 </tr>
+               </thead>
+               <tbody>
+                 <tr ng-repeat="record in doctrecord">
+                    <th scope="row">{{$index + 1}}</th>
+                   <td>{{record.patient__first_name + " " + record.patient__last_name}}</td>
+                   <td>{{record.patient__age}}</td>
+                   <td>{{record.patient__gender}}</td>
+                   <td>{{record.appointmentDate}}</td>
+                   <td>{{record.symptoms}}</td>
+
+              <td><button class="btn btn-outline-info" ng-click="prescribed(record)" type="submit" data-bs-toggle="modal" data-bs-target="#myModal2">Prescription</button>
+                <div ng-app="myApp" ng-controller="Modal3Controller">  
+                  <div class="modal fade" id="myModal2">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content" >
+                  
+                        <div class="modal-header">
+                          <h3 class="modal-title" style="text-align: center;">HEALTHCARE</h3>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                  
+                        <div class="modal-body">
+                          <h5 style="text-align: center;"><u>Medical History</u></h5>
+                           
+                            <div class="row row-cols-2 row-cols-lg-5" ng-repeat="prescribe in press" >
+                                                    
+                              <div style="margin-top: 3%; margin-left: 5%;">
+                                  <h6>Height :-</h6>
+                            <div class="col">
+                              <div id="name">{{prescribe.height}} cm</div>
+                            </div>
+                              </div>
+                      
+                      
+                              <div style="margin-left: 12%; margin-top: 3%;">
+                                  <h6>Weight :-</h6>
+                            <div class="col">
+                              <div id="name">{{prescribe.weight}} kg</div>
+                            </div>
+                          </div>
+                      
+                          <div style="margin-left: 12%; margin-top: 3%;">
+                              <h6>Blood Group :-</h6>
+                            <div class="col">
+                              <div id="name">{{prescribe.blood_group}}</div>
+                            </div>
+                          </div>
+
+                          <div style="margin-top: 3%; margin-left: 5%;">
+                            <h6>Alcoholic :-</h6>
+                      <div class="col">
+                        <div id="name">{{prescribe.alcoholic}}</div>
+                      </div>
+                   </div>
+                
+                
+                        <div style="margin-left: 12%; margin-top: 3%;">
+                            <h6>Smoker :-</h6>
+                      <div class="col">
+                        <div id="name">{{prescribe.smoker}}</div>
+                      </div>
+                    </div>
+                    
+                     </div>
+
+                     <hr>
+
+                     <h5 style="text-align: center;"><u>Prescription</u></h5>  
+                     
+                     <form ng-app="contactsApp" ng-controller="ModalRecordController">  
+                        <button type="button" class="btn btn-outline-success mb-3" ng-click="addfield(contact)">Medicines</button>
+                        <div class="row row-cols-2 row-cols-lg-3" >
+                          <p ng-repeat="contact in contacts">
+                              <input type="text" ng-model="contact.medicine" class="form-control mb-2" name="contact[]" placeholder="Medicine" />
+                              <input type="number" ng-model="contact.quantity" class="form-control mb-2" name="contact[]" placeholder="Quantity" />
+                              <select class="form-select mb-2" ng-model="contact.dosage" style="width: 100%;" aria-label="Default select example">
+                                <option value="" selected disabled hidden>Dosage</option>      
+                                <option value="1 time a day">1 time a day</option>
+                                <option value="2 time a day">2 time a day</option>
+                                <option value="3 time a day">3 time a day</option>
+                                <option value="4 time a day">4 time a day</option>
+                              </select>                              
+                              <select class="form-select " ng-model="contact.timing" style="width: 100%;" aria-label="Default select example">
+                                <option value="" selected disabled hidden>Timing</option>                               
+                                <option value="Before a meal">Before a meal</option>
+                                <option value="After a meal">After a meal</option>
+                              </select> 
+                              <button type="button" class="btn btn-close removeField" ng-click="removeContactField($index)"></button>
+                          </p>
+                         </div>
+                        <br>
+                        </div>
+                    
+                      </form>
+                  
+                    
+                    
+                    <div>
+                    <button type="submit" class="btn btn-outline-danger" style="float: right;" ng-click="submit(record)">Submit</button>
+                    </div>
+                    <br>
+
+                  </div>
+                       
+                      </div>
+                    </div>
+                  </div>
+                  </div>  
+ 
+              </td>
+                 </tr>
+               </tbody>
+             </table>
+        </div>
+    </div>
+              

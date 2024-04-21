@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>LogIn</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
+  <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="node_modules/angular/angular.js"></script>
+  <script src="node_modules/@uirouter/angularjs/release/angular-ui-router.js"></script>
+  <script src="hospital.js"></script>
+
+  <style>
+    .btn-color{
+  background-color: #0e1c36;
+  color: #fff;
+  
+}
+
+.profile-image-pic{
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+}
+
+
+
+.cardbody-color{
+  background-color: rgb(232, 232, 232);
+}
+
+a{
+  text-decoration: none;
+}
+  </style>
+</head>
+<body ng-app="myApp" ng-controller="LogInController">
+    <nav class="navbar navbar-expand-xxl navbar-dark bg-dark ">
+        
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><h1>HEALTH CARE</h1></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            
+          </div>
+        </div>
+      </nav>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <h2 class="text-center text-dark mt-5">Login Form</h2>
+            <div class="card my-5">
+    
+              <form class="card-body cardbody-color p-lg-5" ng-submit="LoginForm">
+    
+                <div class="text-center">
+                  <img src="https://cdn2.vectorstock.com/i/1000x1000/36/06/medical-health-hospital-logo-icon-vector-27693606.jpg" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
+                    width="200px" alt="profile">
+                </div>
+    
+                <div class="mb-3">
+                  <input type="text" class="form-control" id="Username" ng-model="username" aria-describedby="emailHelp"
+                    placeholder="User Name" required>
+                </div>
+                <div class="mb-3">
+                  <input type="password" class="form-control" id="password" ng-model="password" placeholder="password" required>
+                </div>
+                <div class="text-center"><button type="submit" ng-click="login()" class="btn btn-color px-5 mb-5 w-100">Login</button></div>
+                <div id="emailHelp" class="form-text text-center mb-5 text-dark">Not
+                  Registered? <a  ui-sref="Register">Register</a>
+                </div>
+              </form>
+            </div>
+    
+          </div>
+        </div>
+      </div>
+     </form>
+</body>
+</html>

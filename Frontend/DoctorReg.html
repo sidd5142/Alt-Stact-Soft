@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Doctor Registeration</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="node_modules/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="hospital.js"></script>
+    <style>
+/*  */
+.border-md {
+    border-width: 2px;
+}
+
+.btn-facebook {
+    background: #405D9D;
+    border: none;
+}
+
+.btn-facebook:hover, .btn-facebook:focus {
+    background: #314879;
+}
+
+.btn-twitter {
+    background: #42AEEC;
+    border: none;
+}
+
+.btn-twitter:hover, .btn-twitter:focus {
+    background: #1799e4;
+}
+body {
+    min-height: 100vh;
+}
+
+.form-control:not(select) {
+    padding: 1.5rem 0.5rem;
+}
+
+select.form-control {
+    height: 52px;
+    padding-left: 0.5rem;
+}
+
+.form-control::placeholder {
+    color: #ccc;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+.form-control:focus {
+    box-shadow: none;
+}
+
+      
+    </style>
+</head>
+<body ng-app="myApp" ng-controller="DocLogInController">
+    <nav class="navbar navbar-expand-xxl navbar-dark bg-dark ">
+        
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><h1>HEALTH CARE</h1></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            
+            
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item ml-3">
+                <a class="nav-link active" aria-current="page" href="#">Receptionist</a>
+              </li>
+              
+              
+            
+              <li class="nav-item ml-3">
+                <a class="nav-link active" aria-current="page" href="#">Doctor</a>
+              </li>
+              
+              
+            
+              <li class="nav-item ml-">
+                <a class="nav-link active" aria-current="page" href="#">Patient</a>
+              </li>
+                       
+               <li class="nav-item ml-3">
+                <a class="nav-link active" aria-current="page" href="#">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    
+    <div class="container">
+        <div class="row py-5 mt-4 align-items-center">
+            <!-- For Demo ] -->
+            
+                <h1 class="ml-lg-5">Create an Account</h1>
+                <img src="https://img.freepik.com/premium-vector/friendly-doctor-always-smiling_78118-209.jpg" alt="" style="height: 450px; width: 450px;" class="img-fluid d-md-block">
+            
+    
+            <!-- Registeration Form -->
+            <div class="col-md-7 col-lg-6 ml-auto mt-lg-2">
+                <form ng-submit="Docregister()">
+                    <div class="row">
+    
+                        <!-- First Name -->
+                        <div class="input-group col-lg-6 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-user text-muted"></i>
+                                </span>
+                            </div>
+                            <input id="firstName" type="text" name="firstname" ng-model="firstname" placeholder="First Name" class="form-control bg-white border-left-0 border-md" required>
+                        </div>
+    
+                        <!-- Last Name -->
+                        <div class="input-group col-lg-6 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-user text-muted"></i>
+                                </span>
+                            </div>
+                            <input id="lastName" type="text" name="lastname" ng-model="lastname" placeholder="Last Name" class="form-control bg-white border-left-0 border-md" required>
+                        </div>
+    
+                        <div class="input-group col-lg-12 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-envelope text-muted"></i>
+                                </span>
+                            </div>
+                            <input id="email" type="email" name="email" ng-model="email" ng-change="validateEmail()" ng placeholder="Email Address" class="form-control bg-white border-left-0 border-md">
+                            <div ng-show="email == '' && !emailIsValid">
+                                <p style="color: red;">Invalid email format</p>
+                            </div>
+                            <div ng-show="emailIsValid">
+                                <p style="color: green;">Valid email format</p>
+                            </div>
+                        </div>
+    
+                        <div class="input-group col-lg-6 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-user text-muted"></i>
+                                </span>
+                            </div>
+                            <input id="Username" type="text" name="ussername" ng-model="username" placeholder="Username" class="form-control bg-white border-left-0 border-md" required>
+                        </div>
+    
+                        <!-- Phone Number -->
+                        <div class="input-group col-lg-6 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-phone-square text-muted"></i>
+                                </span>
+                            </div>
+                           
+                            <input id="phoneNumber" type="tel" name="phone" ng-model="contact" maxlength="10" placeholder="Phone Number" class="form-control bg-white border-md border-left-0 pl-3" required>
+                        </div>
+    
+                        <div class="input-group col-lg-6 mb-4">
+                                <select class="form-select " ng-model="gender" style="width: 100%;" aria-label="Default select example" required>
+                                    <option value="" selected disabled hidden>Select Gender</option>                               
+                                    <option value="Male">Male</option>
+                                  <option value="Female">Female</option>
+                                  <option value="Other">Other</option>
+                                </select>                  
+                        </div>
+    
+                        <div class="input-group col-lg-6 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-user text-muted"></i>
+                                </span>
+                            </div>
+                            <input id="Age" type="number" name="age" min="1" ng-model="age" placeholder="Enter Your Age" class="form-control bg-white border-left-0 border-md" required>
+                        </div>
+    
+                        <div class="input-group col-lg-6 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-lock text-muted"></i>
+                                </span>
+                            </div>
+                            <input id="password" type="password" name="password" ng-model="password" placeholder="Password" class="form-control bg-white border-left-0 border-md" required>
+                        </div>
+    
+                        <!-- Password Confirmation -->
+                        <div class="input-group col-lg-6 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-lock text-muted"></i>
+                                </span>
+                            </div>
+                            <input id="passwordConfirmation" type="password" ng-model="confpassword" name="passwordConfirmation" ng-change="validatePassword()" placeholder="Confirm Password" class="form-control bg-white border-left-0 border-md">
+                            <div class="text-danger" ng-show="myForm.confpassword.$dirty && myForm.confpassword.$error.required">Confirm Password is Required</div>
+                                 <div class="text-danger" ng-show="passwordMismatch">
+                                   Password do not match.
+                                 </div>
+                        </div>
+    
+                        <div class="input-group col-lg-12 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-home text-muted"></i>
+                                </span>
+                            </div>
+                            <input id="address" type="text" name="address" ng-model="address" placeholder="Address" class="form-control bg-white border-left-0 border-md">
+                        </div>
+    
+                        <div class="input-group col-lg-6 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-user text-muted"></i>
+                                </span>
+                            </div>
+                            <input id="Qualification" type="text" name="Qualification" ng-model="qualification" placeholder="Enter Your Qualification" class="form-control bg-white border-left-0 border-md" required>
+                        </div>
+                        <div class="input-group col-lg-6 mb-4" >
+                            <select class="form-select " ng-model="department" style="width: 100%;" aria-label="Default select example">
+                                <option value="" selected disabled hidden>Department</option>                               
+                              <option value="{{depart.id}}" ng-repeat="depart in departs">{{depart.departments}}</option>
+                              
+                            </select>                  
+                        </div>
+                        <div class="input-group col-lg-6 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-user text-muted"></i>
+                                </span>
+                            </div>
+                            <input id="Fees" type="text" name="fees" ng-model="fees" placeholder="Fees" class="form-control bg-white border-left-0 border-md" required>
+                        </div>
+    
+                        <div class="form-group col-lg-12 mx-auto mb-0">
+                            <!-- <a href="#" class="btn btn-primary btn-block py-2">
+                                <span class="font-weight-bold">Create your account</span>
+                            </a> -->
+                            <button type="submit" class="btn btn-primary btn-lg" style="margin-left: 33%;" >Register Now</button>
+                            </div>
+    
+                       <div class="text-center w-100">
+                            <p class="text-muted font-weight-bold">Already Registered? <a  class="text-primary ml-2" ui-sref="Login">Login</a></p>
+                        </div>
+    
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+
+</body>
+</html>

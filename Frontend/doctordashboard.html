@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Doctor Dashboard</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="node_modules/angular/angular.js"></script>
+  <script src="node_modules/@uirouter/angularjs/release/angular-ui-router.js"></script>
+  <script src="hospital.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="DoctorDashboardController">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><h3>HEALTHCARE</h3></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            
+          </div>
+        </div>
+      </nav>
+
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                    <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                        <span class="fs-5 d-none d-sm-inline">DASHBOARD</span>
+                    </a>
+                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                       
+                        <li ng-repeat="panels in panel">
+                            <a  class="nav-link px-0 align-middle"
+                                 ng-click="dash" ui-sref="{{panels.state}}"><i class="{{panels.icons}}"></i> {{panels.panel}}</a>
+                        </li>
+                        <ul>
+                          <button class="btn btn-outline-primary" style="margin-top: 500px; height: 10%;" ng-click="logout()">LogOut</button>
+                          </ul>
+                    </ul>
+                    <hr>
+                     
+                </div>
+            </div>
+            <div class="col mt-lg-5">
+                       <div class="container-fluid" ui-view="">
+            </div>
+          </div>
+ 
+         </div>
+    
+     </div>   
+    
+</body>
+</html>

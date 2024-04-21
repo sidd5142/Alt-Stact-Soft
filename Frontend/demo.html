@@ -1,0 +1,69 @@
+<!doctype html>
+<html ng-app="app">
+
+<head>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+  <script src="script.js"></script>
+</head>
+
+<body>
+  <div ng-controller="listController">
+    <div id="exportthis">
+        <table border="1" class="table caption-top ">
+            <caption>Records :-</caption>
+            <thead class="bg-dark table-dark">
+              <tr>
+                 <th scope="col">Index</th>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Appointment Date</th>
+                <th scope="col">Checkup Date</th>
+                <th scope="col">Prescription</th>
+                <!-- <th scope="col">Visits</th> -->
+              </tr>
+            </thead>
+            <tbody>
+              <tr >
+                 <th scope="row">1</th>
+                <td>Siddharth Yadab</td>
+                <td>20</td>
+                <td>Male</td>
+                <td>2023-02-23</td>
+                <td>not given</td>
+                <td>Null</td>
+              </tr>
+            </tbody>
+        </table>
+                </div>
+    <button ng-click="export()">export</button>
+  </div>
+</body>
+
+</html>
+<script>
+    var app = angular.module("app", []);
+
+app.controller("listController", ["$scope",
+  function($scope) {
+    // $scope.data=  [{"agence":"CTM","secteur":"Safi","statutImp":"operationnel"}];
+    
+    $scope.export = function(){
+       html2canvas(document.getElementById('exportthis'), {
+           onrendered: function (canvas) {
+               var data = canvas.toDataURL();
+               var docDefinition = {
+                   content: [{
+                       image: data,
+                       width: 500,
+                   }]
+               };
+               pdfMake.createPdf(docDefinition).download("prescription.pdf");
+           }
+       });
+    }
+  }
+]);
+</script>

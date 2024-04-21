@@ -1,0 +1,72 @@
+<div ng-app="App" ng-controller="MedicalController">
+    <!-- <div class="col py-3"> -->
+
+        <h3 class=" mt-5 text-lg-center"><u>Medical History</u></h3>
+
+
+        <div class="card bg-white text-dark">
+        <div class="container">
+        <div class="row row-cols-2 row-cols-lg-4">
+            <div style=" margin-top: 3%; margin-left: 5%;">
+                <h5>Height(cm) :- </h5>
+          <div class="col">
+            <div class="input-group flex-nowrap">
+              <input type="number" class="p-3 form-control border" ng-model="height"  placeholder="Height" aria-label="date" aria-describedby="addon-wrapping" required>
+            </div>
+            </div>
+            </div>
+        
+            <div style=" margin-top: 3%; margin-left: 8%;">
+                <h5>Weight(kg) :- </h5>
+          <div class="col">
+            <div class="input-group flex-nowrap">
+              <input type="number" class="p-3 form-control border" min="5" ng-model="weight" maxlength="3" size="3" placeholder="Weight" aria-label="date" aria-describedby="addon-wrapping" required>
+            </div>
+            </div>
+            </div>
+        
+            <div style="margin-left: 8%; margin-top: 3%;">
+                <h5>Blood Group :-</h5>
+                <div class="input-group flex-nowrap">
+                  <select class="p-3 form-select " ng-model="blood_group" style="width: 100%;" aria-label="Default select example" required>
+                    <option value="" selected disabled hidden>Blood Group</option>                               
+                    <option value="A+">A+</option>
+                    <option value="B+">B+</option>
+                    <option value="O+">O+</option>
+                    <option value="A-">A-</option>
+                    <option value="B-">B-</option>
+                    <option value="O-">O-</option>
+        
+                      </select>                
+                 </div>
+            </div>
+        
+        
+            <div style="margin-top: 3%; margin-left: 5%;">
+                <h5>Smoker :-</h5>
+                <div class="input-group flex-nowrap">
+                  <select class="p-3 form-select " ng-model="smoker" style="width: 100%;" aria-label="Default select example" required>
+                    <option value="" selected disabled hidden>Smoker</option>     
+                    <option value="Yes" >Yes</option>
+                  <option value="No" >No</option>                          
+                  </select>                
+                 </div>
+            </div>
+        
+            <div style="margin-top: 3%; margin-left: 8%;">
+              <h5>Alcoholic :-</h5>
+              <div class="input-group flex-nowrap">
+                <select class="p-3 form-select " ng-model="alcoholic" style="width: 100%;" aria-label="Default select example" required>
+                  <option value="" selected disabled hidden>Alcoholic</option>                               
+                  <option value="Yes" >Yes</option>
+                  <option value="No" >No</option>
+                </select>                
+               </div>
+          </div>
+
+          <div style="margin-left: 45%; margin-top: 2%; margin-bottom: 2%;">
+            <button class="btn btn-outline-danger" ng-click="submit()" style="height: 50px;">Submit</button>
+           </div>
+        
+<!-- </div> -->
+</div>
